@@ -1,0 +1,94 @@
+@font-face {
+  font-family: intro;
+  src: url(fonts/Intro.otf);
+}
+
+@font-face {
+  font-family: russOne;
+  src: url(fonts/RussoOne.ttf);
+}
+
+@font-face {
+  font-family: montserrat;
+  src: url(fonts/Montserrat.ttf);
+}
+
+* {
+  -webkit-user-drag: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+body {
+  padding: 10px;
+  background-color: #e1f5fe !important;
+  font-family: montserrat, sans-serif !important;
+}
+
+.navContainer {
+  margin: auto;
+  padding: 10px;
+  position: sticky;
+  top: 10px;
+  width: fit-content;
+  z-index: 1000;
+  background-color: #01579b;
+  border-radius: 20px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.instructions {
+  font-family: russOne, sans-serif;
+  font-size: 24px;
+  text-shadow: 2px 2px 4px #000000;
+  width: 75%;
+  margin: 15px auto;
+  padding: 45px;
+  color: #fff;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  box-shadow: inset 0 0 15px rgba(135, 135, 135, 0.1),
+    0 0 18px 3px rgba(0, 0, 0, 0.3);
+}
+
+.instructions h1 {
+  text-align: center;
+}
+
+.level {
+  margin: 15px;
+  padding: 20px;
+  color: #01579b;
+  text-align: center;
+  border-radius: 25px;
+}
+
+.level h1 {
+  font-family: intro, sans-serif;
+}
+
+/* #level1 {
+  background-color: #f5a11d;
+}
+
+#level2 {
+  background-color: #c4242d;
+}
+
+#level3 {
+  background-color: #b70d0d;
+} */
+
+.nav-link {
+  color: #fff !important;
+}
+
+.nav-link.active {
+  border: 1px solid #fff !important;
+  font-weight: bold;
+  background-color: #01579b !important;
+  border-radius: 15px !important;
+}

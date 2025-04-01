@@ -274,7 +274,7 @@
             const correctIndex =
               currentQuestions[currentQuestionIndex].correct;
 
-            fetch("http://localhost:5000/update-question", {
+            fetch("/update-question", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify({
@@ -299,7 +299,6 @@
         });
       });
 
-      if (solvedTasks == 30)
         document
           .getElementById("quizModal")
           .addEventListener("hidden.bs.modal", () => {

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .dashContainer {
+            font-family: russOne, sans-serif;
+            background-color: #283845;
+            font-size: 1.7vw;
+            /* text-shadow: 2px 2px 4px #000000; */
+            width: 80%;
+            margin: 15px auto;
+            padding: 20px;
+            color: #fff;
+            text-align: center;
+            border-radius: 20px;
+            /* background-color: rgba(255, 255, 255, 0.15); */
+            box-shadow: inset 0 0 15px rgba(135, 135, 135, 0.1),
+                0 0 18px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        table {
+            width: 100%;
+        }
+
+        .badge {
+            width: 60px;
+        }
+
+        .icon-cell {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 5px;
+        }
+
+        td {
+            vertical-align: middle;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="dashContainer">
+        <h2>Leaderboard</h2>
+        <table class="table">
+            <thead>
+            </thead>
+            <tbody id="groupTableBody">
+
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function generateIcons(ironMan, spiderMan, drStrange) {
+            let icons = '';
+            for (let i = 0; i < ironMan; i++) {
+                icons += `<img class="badge" src="images/9.png" alt="Iron Man">`;
+            }
+            for (let i = 0; i < spiderMan; i++) {
+                icons += `<img class="badge" src="images/10.png" alt="Spider Man">`;
+            }
+            for (let i = 0; i < drStrange; i++) {
+                icons += `<img class="badge" src="images/11.png" alt="Dr Strange">`;
+            }
+            return icons;
+        }
+
+        async function fetchGroups() {
+            const response = await fetch('http://127.0.0.1:5000/get_groups');
+            const groups = await response.json();
+            const tableBody = document.getElementById('groupTableBody');
+            tableBody.innerHTML = '';
+
+            groups.forEach(group => {
+                const row = `<tr>
+                    <td>${group.id}</td>
+                    <td>${group.name}</td>
+                    <td class="icon-cell">${generateIcons(group.ironMan, group.spiderMan, group.drStrange)}</td>
+                    <td>${group.total}</td>
+                </tr>`;
+                tableBody.innerHTML += row;
+            });
+        }
+
+        fetchGroups();
+    </script>
+</body>
+
+</html>

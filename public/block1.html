@@ -142,7 +142,7 @@
     </div>
   </div>
 
-  <button type="button" class="btn btn-lg nextStage" onclick="location.href='block1.html'">
+  <button type="button" class="btn btn-lg nextStage" onclick="location.href='block2.html'">
     СЛЕДУЮЩЕЕ ИСПЫТАНИЕ
   </button>
 
@@ -276,7 +276,7 @@
 
             fetch("http://localhost:5000/update-question", {
               method: "POST",
-              headers: {"Content-Type": "application/json"},
+              headers: { "Content-Type": "application/json" },
               body: JSON.stringify({
                 id: currentQuestions[currentQuestionIndex].id,
               }),

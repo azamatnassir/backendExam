@@ -1,0 +1,42 @@
+[
+    {
+        "id": 1,
+        "name": "Стражи Галактики",
+        "ironMan": 2,
+        "spiderMan": 3,
+        "drStrange": 1,
+        "total": 6
+    },
+    {
+        "id": 2,
+        "name": "Мстители",
+        "ironMan": 1,
+        "spiderMan": 2,
+        "drStrange": 2,
+        "total": 5
+    },
+    {
+        "id": 3,
+        "name": "Люди Икс",
+        "ironMan": 2,
+        "spiderMan": 0,
+        "drStrange": 3,
+        "total": 5
+    },
+    {
+        "id": 4,
+        "name": "Фантастическая четвёрка",
+        "ironMan": 0,
+        "spiderMan": 1,
+        "drStrange": 0,
+        "total": 1
+    },
+    {
+        "id": 5,
+        "name": "Агенты Щ.И.Т.",
+        "ironMan": 1,
+        "spiderMan": 0,
+        "drStrange": 1,
+        "total": 2
+    }
+]

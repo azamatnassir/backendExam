@@ -66,6 +66,18 @@ def get_questions():
 
     return jsonify(data)
 
+@app.route("/get_groups")
+def get_groups():
+    conn = sqlite3.connect("questions.db")
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM groups")
+    rows = cursor.fetchall()
+    columns = [column[0] for column in cursor.description]
+    conn.close()
+
+    groups = [dict(zip(columns, row)) for row in rows]
+    return jsonify(groups)
+
 @app.route("/")
 def home():
     return app.send_static_file("index.html")

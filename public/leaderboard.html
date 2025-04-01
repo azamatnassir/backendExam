@@ -71,7 +71,7 @@
         }
 
         async function fetchGroups() {
-            const response = await fetch('http://127.0.0.1:5000/get_groups');
+            const response = await fetch('/get_groups');
             const groups = await response.json();
             groups.sort((a, b) => b.total - a.total);
             const tableBody = document.getElementById('groupTableBody');

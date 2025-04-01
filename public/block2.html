@@ -23,6 +23,44 @@
       crossorigin="anonymous"
     ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/sql-wasm.js"></script>
+    <style>
+      body {
+        background-color: #424345 !important;
+      }
+
+      .taskContainer {
+        width: 75%;
+        margin: 15px auto;
+        padding: 30px;
+        gap: 25px;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        color: white;
+      }
+
+      .taskContainer h1 {
+        font-size: 3vw !important;
+        font-family: russOne, sans-serif;
+      }
+
+      img {
+        height: 85vh;
+        margin: auto;
+        border-radius: 25px;
+      }
+
+      .taskContainer div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 45px;
+        margin: auto;
+        width: 95%;
+        height: 80vh;
+        font-size: 1.25vw !important;
+      }
+    </style>
   </head>
   <body>
     <div class="navContainer">
@@ -34,6 +72,25 @@
         <a class="nav-link active" href="block2.html">Испытание Тони Старка</a>
         <a class="nav-link" href="block3.html">Колесо Фортуны</a>
       </nav>
+    </div>
+
+    <div class="taskContainer">
+      <div>
+        <h1>
+          Испытание от Тони Старка: <br />Анализ сетевого трафика в лаборатории
+          <br />
+          "Старк Индастриз"
+        </h1>
+        <p>
+          Вы – стажёры в технологической лаборатории "Старк Индастриз". Тони
+          Старк подготовил для вас испытание: вам нужно настроить сеть для
+          тестирования нового ИИ J.A.R.V.I.S. и доказать, что вы достойны
+          работать в команде Мстителей. Но будьте внимательны – сеть может
+          подвергнуться кибератаке от Хайдры, и вам нужно уметь быстро
+          анализировать сетевой трафик!
+        </p>
+      </div>
+      <img src="images/scheme.jpg" alt="" />
     </div>
 
     <script src="script.js"></script>

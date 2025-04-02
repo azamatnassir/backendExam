@@ -18,6 +18,17 @@ def init_db():
             solved INTEGER DEFAULT 0
         )
     """)
+
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS groups (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT NOT NULL,
+            total INTEGER NOT NULL,
+            ironMan INTEGER NOT NULL,
+            spiderMan INTEGER NOT NULL,
+            drStrange INTEGER NOT NULL
+        )      
+    """)
     conn.commit()
     conn.close()
 
@@ -36,6 +47,39 @@ def update_question():
         cursor = conn.cursor()
         
         cursor.execute("UPDATE quiz_questions SET solved = 1 WHERE id = ?", (question_id,))
+        conn.commit()
+        conn.close()
+
+        return jsonify({"success": True})
+    except Exception as e:
+        return jsonify({"success": False, "error": str(e)}), 500
+    
+
+@app.route("/update-group", methods=["POST"])
+def update_group():
+    data = request.json  
+    group_name = data.get("name")
+    level_name = data.get("level")
+
+    if level_name is None:
+        return jsonify({"success": False, "error": "Нет level_name"}), 400
+    
+    if group_name is None:
+        return jsonify({"success": False, "error": "Нет group_name"}), 400
+    
+
+    if level_name == "level1":
+        query = "UPDATE groups SET ironMan = ironMan + 1, total = total + 1 WHERE name = ?"
+    elif level_name == "level2":
+        query = "UPDATE groups SET spiderMan = spiderMan + 2, total = total + 2 WHERE name = ?"
+    else: 
+        query = "UPDATE groups SET drStrange = drStrange + 3, total = total + 3 WHERE name = ?"
+
+    try:
+        conn = sqlite3.connect("questions.db")
+        cursor = conn.cursor()
+        
+        cursor.execute(query, (group_name,))
         conn.commit()
         conn.close()
 
@@ -77,6 +121,10 @@ def get_groups():
 
     groups = [dict(zip(columns, row)) for row in rows]
     return jsonify(groups)
+
+@app.route("/leaderboard")
+def leaderboard():
+    return app.send_static_file("leaderboard.html")
 
 @app.route("/")
 def home():

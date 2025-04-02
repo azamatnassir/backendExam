@@ -1,0 +1,188 @@
+{
+  "level1": [
+    {
+      "id": 1,
+      "question": "Какой оператор используется в Python для ожидания завершения асинхронной операции?",
+      "answers": [
+        "wait",
+        "await",
+        "pause",
+        "async"
+      ],
+      "correct": 1,
+      "solved": 0
+    },
+    {
+      "id": 2,
+      "question": "Какой токен часто используется для аутентификации в веб-приложениях?",
+      "answers": [
+        "JSON Token Protocol (JTP)",
+        "Java Token System (JTS)",
+        "JSON Web Token (JWT)",
+        "Secure Auth Token (SAT)"
+      ],
+      "correct": 2,
+      "solved": 0
+    },
+    {
+      "id": 3,
+      "question": "Какой оператор выполняет SQL-запрос в Flask с использованием SQLAlchemy?",
+      "answers": [
+        "db.query()",
+        "db.execute()",
+        "db.session.add()",
+        "db.session.query()"
+      ],
+      "correct": 3,
+      "solved": 0
+    },
+    {
+      "id": 4,
+      "question": "Какой формат данных чаще всего используется для передачи информации в REST API?",
+      "answers": [
+        "XML",
+        "YAML",
+        "JSON",
+        "CSV"
+      ],
+      "correct": 2,
+      "solved": 0
+    },
+    {
+      "id": 5,
+      "question": "Какое расширение обычно имеют файлы Jupyter Notebook?",
+      "answers": [
+        ".py",
+        ".txt",
+        ".ipynb",
+        ".csv"
+      ],
+      "correct": 2,
+      "solved": 0
+    }
+  ],
+  "level2": [
+    {
+      "id": 6,
+      "question": "В чем разница между asyncio.create_task() и await в Python?",
+      "answers": [
+        "create_task() создает фоновую задачу, await ожидает выполнение",
+        "await выполняет код быстрее",
+        "create_task() блокирует поток",
+        "Разницы нет"
+      ],
+      "correct": 0,
+      "solved": 0
+    },
+    {
+      "id": 7,
+      "question": "Что хранится в JWT-токене?",
+      "answers": [
+        "Пароль пользователя",
+        "Данные сессии и подпись",
+        "SQL-запросы",
+        "HTML-код"
+      ],
+      "correct": 1,
+      "solved": 0
+    },
+    {
+      "id": 8,
+      "question": "Чем отличается аутентификация от авторизации?",
+      "answers": [
+        "Аутентификация проверяет личность, авторизация – права доступа",
+        "Это одно и то же",
+        "Авторизация проверяет личность, аутентификация – доступ",
+        "Аутентификация используется только в REST API"
+      ],
+      "correct": 0,
+      "solved": 0
+    },
+    {
+      "id": 9,
+      "question": "В чем разница между PUT и PATCH?",
+      "answers": [
+        "PUT заменяет объект целиком, PATCH – частично обновляет",
+        "PATCH быстрее",
+        "PUT используется только в Flask",
+        "Все перечисленные"
+      ],
+      "correct": 0,
+      "solved": 0
+    },
+    {
+      "id": 10,
+      "question": "Какой тип базы данных можно использовать с Flask-SQLAlchemy?",
+      "answers": [
+        "MySQL",
+        "PostgreSQL",
+        "SQLite",
+        "Все перечисленные"
+      ],
+      "correct": 3,
+      "solved": 0
+    }
+  ],
+  "level3": [
+    {
+      "id": 11,
+      "question": "Какой формат данных рекомендуется использовать для обмена между микросервисами в высоконагруженных системах?",
+      "answers": [
+        "JSON",
+        "XML",
+        "YAML",
+        "Protocol Buffers (gRPC)"
+      ],
+      "correct": 3,
+      "solved": 0
+    },
+    {
+      "id": 12,
+      "question": "Чем bcrypt отличается от SHA-256?",
+      "answers": [
+        "bcrypt медленнее, но безопаснее",
+        "SHA-256 можно использовать для хранения паролей",
+        "bcrypt нельзя использовать в Python",
+        "SHA-256 медленнее"
+      ],
+      "correct": 0,
+      "solved": 0
+    },
+    {
+      "id": 13,
+      "question": "Какой компонент в OAuth 2.0 выдает токены?",
+      "answers": [
+        "Клиент",
+        "Сервер аутентификации",
+        "Пользователь",
+        "Браузер"
+      ],
+      "correct": 1,
+      "solved": 0
+    },
+    {
+      "id": 14,
+      "question": "Какой принцип архитектуры REST API требует, чтобы сервер не хранил информацию о состоянии клиента между запросами?",
+      "answers": [
+        "Stateless",
+        "Layered System",
+        "Cacheability",
+        "Client-Server Separation"
+      ],
+      "correct": 0,
+      "solved": 0
+    },
+    {
+      "id": 15,
+      "question": "Какой заголовок используется для CORS?",
+      "answers": [
+        "Access-Control-Allow-Origin",
+        "Allow-Origin",
+        "Allow-CORS",
+        "CORS-Policy"
+      ],
+      "correct": 0,
+      "solved": 0
+    }
+  ]
+}

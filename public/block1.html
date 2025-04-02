@@ -17,29 +17,30 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/sql-wasm.js"></script>
   <style>
     .levels-container {
+      width: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 20px;
+      gap: 3vw;
     }
 
     .container {
       display: grid;
-      grid-template-columns: repeat(5, 230px);
-      gap: 35px;
+      grid-template-columns: repeat(5, 15vw);
+      gap: 2vw;
       justify-content: center;
     }
 
     .card {
       background: transparent;
-      width: 230px;
-      height: 230px;
+      width: 100%;
+      height: auto;
       position: relative;
       display: flex;
       justify-content: center;
       align-items: center;
       text-align: center;
-      border-radius: 20px;
+      border-radius: 10%;
       border: 0;
       -webkit-box-shadow: 0px 5px 20px 1px rgba(0, 0, 0, 0.6);
       -moz-box-shadow: 0px 5px 20px 1px rgba(0, 0, 0, 0.6);
@@ -53,14 +54,14 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      border-radius: 20px;
+      border-radius: 10%;
     }
 
     .card p {
       margin: auto;
       font-family: intro, sans-serif;
       color: rgba(255, 255, 255, 0.8);
-      font-size: 75px;
+      font-size: 5vw;
       position: absolute;
     }
 
@@ -111,6 +112,80 @@
       display: none !important;
       background-color: #01579b !important;
     }
+
+    .floating-button {
+      position: fixed;
+      background-color: #01579b;
+      top: 50px;
+      left: 0px;
+      z-index: 1000;
+      font-size: 1vw;
+      border-radius: 0 15px 15px 0;
+      writing-mode: sideways-lr;
+      padding: 10px;
+      font-weight: bold;
+    }
+
+    #leaderboardOffcanvas {
+      width: auto;
+      background-color: #e1f5fe !important;
+    }
+
+    .offcanvas-title {
+      font-family: intro, sans-serif;
+      font-size: 1.5vw !important;
+      font-weight: 700 !important;
+      color: #01579b;
+    }
+
+    .dashContainer {
+      font-family: russOne, sans-serif;
+      background-color: #01579b;
+      font-size: 1.2vw;
+      width: fit-content;
+      margin: auto;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: inset 0 0 15px rgba(135, 135, 135, 0.1),
+        0 0 18px 3px rgba(0, 0, 0, 0.3);
+    }
+
+    .icon-cell {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .icon-cell img {
+      height: 2.5em;
+      width: auto;
+    }
+
+    .table-transparent {
+      background-color: transparent;
+      table-layout: auto;
+      width: 100%;
+    }
+
+    .table-transparent td,
+    .table-transparent th {
+      background-color: transparent;
+      color: #fff;
+      white-space: nowrap;
+      vertical-align: middle;
+      padding-right: 5vw;
+    }
+
+    .table th:nth-child(1),
+    .table td:nth-child(1) {
+      width: 50%;
+    }
+
+    .table th:nth-child(2),
+    .table td:nth-child(2) {
+      width: 50%;
+    }
   </style>
 </head>
 
@@ -122,6 +197,28 @@
       <a class="nav-link" href="block2.html">Испытание Тони Старка</a>
       <a class="nav-link" href="block3.html">Колесо Фортуны</a>
     </nav>
+  </div>
+
+  <button class="btn btn-primary floating-button" data-bs-toggle="offcanvas"
+    data-bs-target="#leaderboardOffcanvas">Leaderboard</button>
+
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="leaderboardOffcanvas"
+    aria-labelledby="leaderboardOffcanvasLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="leaderboardOffcanvasLabel">Leaderboard</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <div class="dashContainer">
+        <table class="table table-transparent table-borderless">
+          <thead>
+          </thead>
+          <tbody id="groupTableBody">
+
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 
   <div class="levels-container">
@@ -176,49 +273,68 @@
           <div id="feedbackBottom" class="feedback"></div>
         </div>
         <div class="modal-footer">
+          <select id="groupSelect" class="form-select form-select-lg" aria-label="Выбор группы"
+            style="width: fit-content !important;">
+            <option selected>Загрузка...</option>
+          </select>
           <button type="button" class="btn btn-primary btn-lg" id="checkAnswer" disabled>
             Проверить
           </button>
-          <div class="btn-group dropup my-3">
-            <button type="button" class="btn btn-primary btn-lg dropdown-toggle" data-bs-toggle="dropdown"
-              aria-expanded="false">
-            </button>
-            <ul class="dropdown-menu" id="groupDropdown">
-              <!-- Группы добавятся динамически -->
-            </ul>
-          </div>
         </div>
       </div>
     </div>
   </div>
 
   <script>
+    function generateIcons(ironMan, spiderMan, drStrange) {
+      let icons = '';
+      for (let i = 0; i < ironMan; i++) {
+        icons += `<img class=".img-fluid" src="images/9.png" alt="Iron Man">`;
+      }
+      for (let i = 0; i < spiderMan; i++) {
+        icons += `<img class=".img-fluid" src="images/10.png" alt="Spider Man">`;
+      }
+      for (let i = 0; i < drStrange; i++) {
+        icons += `<img class=".img-fluid" src="images/11.png" alt="Dr Strange">`;
+      }
+      return icons;
+    }
+
+    async function fetchGroups() {
+      const response = await fetch('/get_groups');
+      const groups = await response.json();
+      groups.sort((a, b) => b.total - a.total);
+      const tableBody = document.getElementById('groupTableBody');
+      tableBody.innerHTML = '';
+
+      groups.forEach(group => {
+        const row = `<tr>
+                    <td>${group.name}</td>
+                    <td class="icon-cell">${generateIcons(group.ironMan, group.spiderMan, group.drStrange)}</td>
+                </tr>`;
+        tableBody.innerHTML += row;
+      });
+    }
+
+    fetchGroups();
+
     async function loadGroups() {
-      let groupIndex = 0;
       try {
         const response = await fetch('/get_groups');
         const groups = await response.json();
 
-        const dropdown = document.getElementById('groupDropdown');
-        dropdown.innerHTML = '';
+        const select = document.getElementById('groupSelect');
+        select.innerHTML = '';
 
         groups.forEach(group => {
-          const listItem = `<li><a class="dropdown-item" href="#" onclick="selectGroup('${group.name}')">${group.name}</a></li>`;
-          dropdown.innerHTML += listItem;
-
+          const option = document.createElement('option');
+          option.value = group.name;
+          option.textContent = group.name;
+          select.appendChild(option);
         });
-
-        const options = document.querySelectorAll("dropdown-item");
-        const nextIndex = dropdown.selectedIndex + 1;
-        dropdown.selectedIndex = nextIndex % groups.length;
-
       } catch (error) {
         console.error("Ошибка загрузки групп:", error);
       }
-    }
-
-    function selectGroup(name) {
-      document.querySelector('.btn.dropdown-toggle').textContent = name;
     }
 
     loadGroups();
@@ -244,6 +360,7 @@
       const feedbackBottom = document.getElementById("feedbackBottom");
       const separator = document.getElementById("separator");
       let currentQuestionIndex = 0;
+      let currentQuestionLevel = "";
       let currentQuestions;
       let solvedTasks = 0;
 
@@ -252,7 +369,7 @@
           .getElementById(level)
           .querySelector(".container");
         const questions = levelQuestions[level];
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < questions.length; i++) {
           let card = document.createElement("div");
           card.className = "card";
           let img = document.createElement("img");
@@ -272,6 +389,7 @@
             if (!questions[i % questions.length].solved) {
               currentQuestionIndex = i % questions.length;
               currentQuestions = questions;
+              currentQuestionLevel = level;
               questionText.textContent =
                 currentQuestions[currentQuestionIndex].question;
               document
@@ -290,52 +408,57 @@
           });
           container.appendChild(card);
         }
+      });
 
-        document.getElementById("quizForm").addEventListener("change", () => {
-          checkButton.disabled = false;
-        });
+      document.getElementById("quizForm").addEventListener("change", () => {
+        checkButton.disabled = false;
+      });
 
-        checkButton.addEventListener("click", () => {
-          const selectedAnswer = document.querySelector(
-            "input[name='answer']:checked"
-          );
+      checkButton.addEventListener("click", () => {
+        const selectedAnswer = document.querySelector(
+          "input[name='answer']:checked"
+        );
 
-          if (selectedAnswer) {
-            separator.style.display = "block";
-            feedbackBottom.style.display = "block";
-            checkButton.disabled = true;
+        if (selectedAnswer) {
+          separator.style.display = "block";
+          feedbackBottom.style.display = "block";
+          checkButton.disabled = true;
 
-            document
-              .querySelectorAll("input[name='answer']")
-              .forEach((radio) => (radio.disabled = true));
+          document
+            .querySelectorAll("input[name='answer']")
+            .forEach((radio) => (radio.disabled = true));
 
-            const answerIndex = parseInt(selectedAnswer.value);
-            const correctIndex =
-              currentQuestions[currentQuestionIndex].correct;
+          const answerIndex = parseInt(selectedAnswer.value);
+          const correctIndex =
+            currentQuestions[currentQuestionIndex].correct;
 
-            fetch("/update-question", {
-              method: "POST",
-              headers: {"Content-Type": "application/json"},
-              body: JSON.stringify({
-                id: currentQuestions[currentQuestionIndex].id,
-              }),
+          fetch("/update-question", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              id: currentQuestions[currentQuestionIndex].id,
+            }),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              if (data.success) {
+                console.log("✅ Вопрос обновлён в БД!");
+              } else {
+                console.error("❌ Ошибка обновления:", data.error);
+              }
             })
-              .then((response) => response.json())
-              .then((data) => {
-                if (data.success) {
-                  console.log("✅ Вопрос обновлён в БД!");
-                } else {
-                  console.error("❌ Ошибка обновления:", data.error);
-                }
-              })
-              .catch((error) => console.error("Ошибка:", error));
+            .catch((error) => console.error("Ошибка:", error));
 
-            feedbackBottom.textContent =
-              answerIndex === correctIndex
-                ? "✅ Правильно!"
-                : `❌ Неправильно. Правильный ответ: ${currentQuestions[currentQuestionIndex].answers[correctIndex]}`;
+          const selectedGroup = document.getElementById('groupSelect').value;
+
+          if (answerIndex === correctIndex) {
+            feedbackBottom.textContent = "✅ Правильно!";
+            updateGroup(selectedGroup, currentQuestionLevel);
+          } else {
+            feedbackBottom.textContent = `❌ Неправильно. Правильный ответ: ${currentQuestions[currentQuestionIndex].answers[correctIndex]}`;
           }
-        });
+        }
+
       });
 
       document
@@ -343,6 +466,28 @@
         .addEventListener("hidden.bs.modal", () => {
           location.reload();
         });
+    }
+
+    function updateGroup(groupName, qLevel) {
+      console.log(qLevel);
+
+      fetch("/update-group", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: groupName,
+          level: qLevel
+        }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.success) {
+            console.log("✅ Группа обновлён в БД!");
+          } else {
+            console.error("❌ Ошибка обновления группы:", data.error);
+          }
+        })
+        .catch((error) => console.error("Ошибка:", error));
     }
   </script>
 

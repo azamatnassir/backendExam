@@ -1,7 +1,7 @@
 import json
 import sqlite3
 
-json_file = "questions.json"
+json_file = "backendQ.json"
 
 db_file = "questions.db"
 

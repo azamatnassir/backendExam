@@ -179,12 +179,51 @@
           <button type="button" class="btn btn-primary btn-lg" id="checkAnswer" disabled>
             Проверить
           </button>
+          <div class="btn-group dropup my-3">
+            <button type="button" class="btn btn-primary btn-lg dropdown-toggle" data-bs-toggle="dropdown"
+              aria-expanded="false">
+            </button>
+            <ul class="dropdown-menu" id="groupDropdown">
+              <!-- Группы добавятся динамически -->
+            </ul>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
   <script>
+    async function loadGroups() {
+      let groupIndex = 0;
+      try {
+        const response = await fetch('/get_groups');
+        const groups = await response.json();
+
+        const dropdown = document.getElementById('groupDropdown');
+        dropdown.innerHTML = '';
+
+        groups.forEach(group => {
+          const listItem = `<li><a class="dropdown-item" href="#" onclick="selectGroup('${group.name}')">${group.name}</a></li>`;
+          dropdown.innerHTML += listItem;
+
+        });
+
+        const options = document.querySelectorAll("dropdown-item");
+        const nextIndex = dropdown.selectedIndex + 1;
+        dropdown.selectedIndex = nextIndex % groups.length;
+
+      } catch (error) {
+        console.error("Ошибка загрузки групп:", error);
+      }
+    }
+
+    function selectGroup(name) {
+      document.querySelector('.btn.dropdown-toggle').textContent = name;
+    }
+
+    loadGroups();
+
+
     document.addEventListener("DOMContentLoaded", () => {
       fetch("/get-questions")
         .then((response) => response.json())
@@ -276,7 +315,7 @@
 
             fetch("/update-question", {
               method: "POST",
-              headers: { "Content-Type": "application/json" },
+              headers: {"Content-Type": "application/json"},
               body: JSON.stringify({
                 id: currentQuestions[currentQuestionIndex].id,
               }),
@@ -299,11 +338,11 @@
         });
       });
 
-        document
-          .getElementById("quizModal")
-          .addEventListener("hidden.bs.modal", () => {
-            location.reload();
-          });
+      document
+        .getElementById("quizModal")
+        .addEventListener("hidden.bs.modal", () => {
+          location.reload();
+        });
     }
   </script>
 

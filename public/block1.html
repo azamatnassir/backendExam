@@ -158,7 +158,7 @@
     }
 
     .icon-cell img {
-      height: 2.5em;
+      height: 3em;
       width: auto;
     }
 
@@ -434,7 +434,7 @@
 
           fetch("/update-question", {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
+            headers: {"Content-Type": "application/json"},
             body: JSON.stringify({
               id: currentQuestions[currentQuestionIndex].id,
             }),
@@ -473,7 +473,7 @@
 
       fetch("/update-group", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {"Content-Type": "application/json"},
         body: JSON.stringify({
           name: groupName,
           level: qLevel

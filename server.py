@@ -1,7 +1,6 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS
-import sqlite3
-import json
+import sqlite3, json
 
 app = Flask(__name__, static_folder="public", static_url_path="/")
 CORS(app)
@@ -139,6 +138,6 @@ def home():
 
 
 if __name__ == "__main__":
-    from waitress import serve
-    serve(app, host="0.0.0.0", port=8080)
-    # app.run(debug=True, port=5000)
+    # from waitress import serve
+    # serve(app, host="0.0.0.0", port=8080)
+    app.run(debug=True, port=5000)

@@ -29,10 +29,12 @@ except Exception as e:
 
 for level, questions in data.items():
     for question in questions:
-        cursor.execute("""
+        cursor.execute(
+            """
             INSERT INTO quiz_questions (level, question, answers, correct, solved) 
             VALUES (?, ?, ?, ?, ?)
-        """, (level, question["question"], json.dumps(question["answers"]), question["correct"], 0))
+        """, (level, question["question"], json.dumps(
+                question["answers"]), question["correct"], 0))
 
 conn.commit()
 conn.close()

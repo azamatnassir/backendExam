@@ -195,7 +195,7 @@
       <a class="nav-link" href="/">Главная</a>
       <a class="nav-link active" href="/task1">Испытание Героев: Битва за Мультивселенную</a>
       <a class="nav-link" href="/task2">Испытание Тони Старка</a>
-      <a class="nav-link" href="/fortune">Колесо Фортуны</a>
+      <a class="nav-link" href="/feedback">Рефлексия</a>
     </nav>
   </div>
 
@@ -434,7 +434,7 @@
 
           fetch("/update-question", {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
+            headers: {"Content-Type": "application/json"},
             body: JSON.stringify({
               id: currentQuestions[currentQuestionIndex].id,
             }),
@@ -473,7 +473,7 @@
 
       fetch("/update-group", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {"Content-Type": "application/json"},
         body: JSON.stringify({
           name: groupName,
           level: qLevel

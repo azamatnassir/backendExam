@@ -94,77 +94,293 @@
         <h3 class="mb-4">Обработка формы и отображение результата</h3>
 
         <code>
-from flask import Flask, request, <select class="inline-select" id="q1word1">
-  <option selected disabled>_____</option>
+          from flask import Flask, request, <select class="inline-select" id="word1">
+            <option selected disabled>_____</option>
             <option value="render_template">render_template</option>
-            <option value="define">define</option>
-            <option value="include">include</option>
+            <option value="jsonify">jsonify</option>
+            <option value="make_response">make_response</option>
           </select>, redirect, url_for
-
-app = Flask(<select class="inline-select" id="q1word2">
-  <option selected disabled>_____</option>
-            <option value="import">import</option>
+          
+          app = Flask(<select class="inline-select" id="word2">
+            <option selected disabled>_____</option>
             <option value="__name__">__name__</option>
-            <option value="include">include</option>
+            <option value="main">main</option>
+            <option value="Flask">Flask</option>
           </select>)
-
-@app.route("/")
-def index():
-    return render_template("<select class="inline-select" id="q1word3">
-      <option selected disabled>_____</option>
-                <option value="index.html">index.html</option>
-                <option value="define">define</option>
-                <option value="include">include</option>
-              </select>")
-
-@app.route("/submit", methods=["<select class="inline-select" id="q1word4">
-  <option selected disabled>_____</option>
-            <option value="import">import</option>
-            <option value="define">define</option>
-            <option value="include">include</option>
+          
+          @app.route("/")
+          def index():
+              return render_template(<select class="inline-select" id="word3">
+            <option selected disabled>_____</option>
+            <option value="index.html">"index.html"</option>
+            <option value="main.html">"main.html"</option>
+            <option value="form.py">"form.py"</option>
+          </select>)
+          
+          @app.route("/submit", methods=["<select class="inline-select" id="word4">
+            <option selected disabled>_____</option>
+            <option value="GET">GET</option>
+            <option value="POST">POST</option>
+            <option value="PUT">PUT</option>
           </select>", "POST"])
-def submit():
-    if request.method == "POST":
-        name = request.form.get("<select class="inline-select" id="q1word5">
-          <option selected disabled>_____</option>
-                    <option value="import">import</option>
-                    <option value="define">define</option>
-                    <option value="include">include</option>
-                  </select>")
-        return redirect(url_for("<select class="inline-select" id="q1word6">
-          <option selected disabled>_____</option>
-                    <option value="import">import</option>
-                    <option value="define">define</option>
-                    <option value="include">include</option>
-                  </select>", username=name))
-    return "Only POST allowed."
-
-@app.route("/hello/<username>")
-def hello(username):
-    return f"Привет, {username}!"
-
-if __name__ == "<select class="inline-select" id="q1word7">
-  <option selected disabled>_____</option>
-            <option value="import">import</option>
-            <option value="define">define</option>
-            <option value="include">include</option>
-          </select>":
-    app.___(debug=True)
-    </code>
+          def submit():
+              if request.method == "POST":
+                  name = request.form.get(<select class="inline-select" id="word5">
+            <option selected disabled>_____</option>
+            <option value="name">"name"</option>
+            <option value="username">"username"</option>
+            <option value="input">"input"</option>
+          </select>)
+                  return redirect(url_for(<select class="inline-select" id="word6">
+            <option selected disabled>_____</option>
+            <option value="hello">"hello"</option>
+            <option value="submit">"submit"</option>
+            <option value="index">"index"</option>
+          </select>, username=name))
+              return "Only POST allowed."
+          
+          @app.route("/hello/&lt;username&gt;")
+          def hello(username):
+              return f"Привет, {username}!"
+          
+          if __name__ == <select class="inline-select" id="word7">
+            <option selected disabled>_____</option>
+            <option value="__main__">"__main__"</option>
+            <option value="main">"main"</option>
+            <option value="name">"name"</option>
+          </select>:
+              app.<select class="inline-select" id="word8">
+            <option selected disabled>_____</option>
+            <option value="run">run</option>
+            <option value="start">start</option>
+            <option value="launch">launch</option>
+          </select>(debug=True)
+          </code>
 
         <button class="btn btn-primary mt-3" onclick="checkMixedAnswers()">Проверить ответы</button>
         <div id="result" class="mt-3 fw-bold"></div>
       </div>
-      <div class="tab-pane fade" id="nav-task2" role="tabpanel" aria-labelledby="nav-task2-tab" tabindex="0">
+      <div class="tab-pane fade p-4" id="nav-task2" role="tabpanel" aria-labelledby="nav-task2-tab" tabindex="0">
+        <h3 class="mb-4">Простое API c получением и отправкой JSON</h3>
+        <code>
+          from flask import Flask, <select class="inline-select" id="word1">
+            <option selected disabled>_____</option>
+            <option value="jsonify">jsonify</option>
+            <option value="render_template">render_template</option>
+            <option value="url_for">url_for</option>
+          </select>, request
+          
+          app = Flask(<select class="inline-select" id="word2">
+            <option selected disabled>_____</option>
+            <option value="__name__">__name__</option>
+            <option value="main">main</option>
+            <option value="app">app</option>
+          </select>)
+          
+          users = []
+          
+          @app.route("/users", methods=["GET"])
+          def get_users():
+              return jsonify(<select class="inline-select" id="word3">
+            <option selected disabled>_____</option>
+            <option value="users">users</option>
+            <option value="data">data</option>
+            <option value="response">response</option>
+          </select>)
+          
+          @app.route("/users", methods=[" <select class="inline-select" id="word4">
+            <option selected disabled>_____</option>
+            <option value="POST">POST</option>
+            <option value="PUT">PUT</option>
+            <option value="DELETE">DELETE</option>
+          </select>"])
+          def add_user():
+              data = request.<select class="inline-select" id="word5">
+            <option selected disabled>_____</option>
+            <option value="get_json">get_json()</option>
+            <option value="form">form()</option>
+            <option value="json">json()</option>
+          </select>
+              username = data.get("username")
+              if username:
+                  users.append({"username": username})
+                  return jsonify({" <select class="inline-select" id="word6">
+            <option selected disabled>_____</option>
+            <option value="message">message</option>
+            <option value="user">user</option>
+            <option value="result">result</option>
+          </select>": "User added"}), 201
+              return jsonify({"error": "No username provided"}), <select class="inline-select" id="word7">
+            <option selected disabled>_____</option>
+            <option value="400">400</option>
+            <option value="404">404</option>
+            <option value="500">500</option>
+          </select>
+          
+          if __name__ == <select class="inline-select" id="word8">
+            <option selected disabled>_____</option>
+            <option value="__name__">"__name__"</option>
+            <option value="main">"main"</option>
+            <option value="app">"app"</option>
+          </select>:
+              app.run()
+          </code>
 
       </div>
-      <div class="tab-pane fade" id="nav-task3" role="tabpanel" aria-labelledby="nav-task3-tab" tabindex="0">
+      <div class="tab-pane fade p-4" id="nav-task3" role="tabpanel" aria-labelledby="nav-task3-tab" tabindex="0">
+        <h3 class="mb-4">Мини-магазин — добавление и просмотр товаров</h3>
+        <code>
+          from flask import Flask, request, jsonify
+          
+          app = Flask(<select class="inline-select" id="word1">
+            <option selected disabled>_____</option>
+            <option value="__name__">__name__</option>
+            <option value="main">main</option>
+            <option value="app">app</option>
+          </select>)
+          
+          products = []
+          
+          @app.route("/products", methods=[" <select class="inline-select" id="word2">
+            <option selected disabled>_____</option>
+            <option value="GET">GET</option>
+            <option value="POST">POST</option>
+            <option value="PUT">PUT</option>
+          </select>"])
+          def list_products():
+              return jsonify(products)
+          
+          @app.route("/products", methods=["POST"])
+          def add_product():
+              data = request.get_json()
+              name = data.get("name")
+              price = data.get(<select class="inline-select" id="word3">
+            <option selected disabled>_____</option>
+            <option value="price">"price"</option>
+            <option value="cost">"cost"</option>
+            <option value="value">"value"</option>
+          </select>)
+              if name and price:
+                  products.<select class="inline-select" id="word4">
+            <option selected disabled>_____</option>
+            <option value="append">append</option>
+            <option value="insert">insert</option>
+            <option value="extend">extend</option>
+          </select>({"name": name, "price": price})
+                  return jsonify({"status": "added"}), 201
+              return jsonify({"error": "Missing data"}), <select class="inline-select" id="word5">
+            <option selected disabled>_____</option>
+            <option value="400">400</option>
+            <option value="404">404</option>
+            <option value="500">500</option>
+          </select>
+          
+          if __name__ == <select class="inline-select" id="word6">
+            <option selected disabled>_____</option>
+            <option value="__main__">"__main__"</option>
+            <option value="__name__">"__name__"</option>
+            <option value="main">"main"</option>
+          </select>:
+              app.<select class="inline-select" id="word7">
+            <option selected disabled>_____</option>
+            <option value="run">run</option>
+            <option value="start">start</option>
+            <option value="execute">execute</option>
+          </select>()
+          </code>
 
       </div>
-      <div class="tab-pane fade" id="nav-task4" role="tabpanel" aria-labelledby="nav-task4-tab" tabindex="0">
+      <div class="tab-pane fade p-4" id="nav-task4" role="tabpanel" aria-labelledby="nav-task4-tab" tabindex="0">
+        <h3 class="mb-4">Обработка URL с параметрами и шаблон</h3>
+        <code>
+          from flask import Flask, render_template
+          
+          app = Flask(<select class="inline-select" id="word1">
+            <option selected disabled>_____</option>
+            <option value="__name__">__name__</option>
+            <option value="main">main</option>
+            <option value="app">app</option>
+          </select>)
+          
+          @app.route("/profile/&lt;username&gt;")
+          def profile(username):
+              age = 25
+              return render_template(<select class="inline-select" id="word2">
+            <option selected disabled>_____</option>
+            <option value="profile.html">"profile.html"</option>
+            <option value="user.html">"user.html"</option>
+            <option value="account.html">"account.html"</option>
+          </select>, username=username, age=<select class="inline-select" id="word3">
+            <option selected disabled>_____</option>
+            <option value="age">age</option>
+            <option value="25">25</option>
+            <option value="username">username</option>
+          </select>)
+          
+          if __name__ == <select class="inline-select" id="word4">
+            <option selected disabled>_____</option>
+            <option value="__main__">"__main__"</option>
+            <option value="main">"main"</option>
+            <option value="__name__">"__name__"</option>
+          </select>:
+              app.<select class="inline-select" id="word5">
+            <option selected disabled>_____</option>
+            <option value="run">run</option>
+            <option value="start">start</option>
+            <option value="launch">launch</option>
+          </select>(debug=True)
+          </code>
 
       </div>
-      <div class="tab-pane fade" id="nav-task5" role="tabpanel" aria-labelledby="nav-task5-tab" tabindex="0">
+      <div class="tab-pane fade p-4" id="nav-task5" role="tabpanel" aria-labelledby="nav-task5-tab" tabindex="0">
+        <h3 class="mb-4">Простая авторизация (без безопасности)</h3>
+        <code>
+          from flask import Flask, request, render_template, redirect, <select class="inline-select" id="word1">
+            <option selected disabled>_____</option>
+            <option value="url_for">url_for</option>
+            <option value="jsonify">jsonify</option>
+            <option value="make_response">make_response</option>
+          </select>
+          
+          app = Flask(<select class="inline-select" id="word2">
+            <option selected disabled>_____</option>
+            <option value="__name__">__name__</option>
+            <option value="main">main</option>
+            <option value="app">app</option>
+          </select>)
+          
+          @app.route("/login", methods=["GET", "POST"])
+          def login():
+              if request.method == "POST":
+                  username = request.form.get("username")
+                  password = request.form.get(<select class="inline-select" id="word3">
+            <option selected disabled>_____</option>
+            <option value="password">"password"</option>
+            <option value="pass">"pass"</option>
+            <option value="pwd">"pwd"</option>
+          </select>)
+                  if username == "admin" and password == "1234":
+                      return redirect(url_for("dashboard"))
+                  return "Неверные данные"
+              return render_template("login.html")
+          
+          @app.route("/dashboard")
+          def dashboard():
+              return "Добро пожаловать в админку!"
+          
+          if __name__ == <select class="inline-select" id="word4">
+            <option selected disabled>_____</option>
+            <option value="__main__">"__main__"</option>
+            <option value="__name__">"__name__"</option>
+            <option value="main">"main"</option>
+          </select>:
+              app.<select class="inline-select" id="word5">
+            <option selected disabled>_____</option>
+            <option value="run">run</option>
+            <option value="start">start</option>
+            <option value="execute">execute</option>
+          </select>(debug=True)
+          </code>
 
       </div>
     </div>
@@ -224,7 +440,6 @@ app = Flask(__name__)<br><br>
         word6: "def",
         word7: "if"
       };
-      // adsadsdadasdasdasd
       let correctCount = 0;
       let total = Object.keys(answers).length;
 
@@ -251,4 +466,4 @@ app = Flask(__name__)<br><br>
   <script src="script.js"></script>
 </body>
 
-</html>k
+</html>

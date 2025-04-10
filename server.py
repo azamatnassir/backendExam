@@ -126,10 +126,25 @@ def get_groups():
     groups = [dict(zip(columns, row)) for row in rows]
     return jsonify(groups)
 
+@app.route("/task1")
+def task1():
+    return app.send_static_file("block1.html")
+
+@app.route("/task2")
+def task2():
+    return app.send_static_file("block2.html")
 
 @app.route("/leaderboard")
 def leaderboard():
     return app.send_static_file("leaderboard.html")
+
+@app.route("/fortune")
+def fortune():
+    return app.send_static_file("fortune.html")
+
+@app.route("/feedback")
+def feedback():
+    return app.send_static_file("feedback.html")
 
 
 @app.route("/")

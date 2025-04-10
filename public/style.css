@@ -83,11 +83,11 @@ body {
   background-color: #b70d0d;
 } */
 
-.nav-link {
+.nav-pills .nav-link {
   color: #fff !important;
 }
 
-.nav-link.active {
+.nav-pills .nav-link.active {
   border: 1px solid #fff !important;
   font-weight: bold;
   background-color: #01579b !important;

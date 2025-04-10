@@ -17,14 +17,14 @@
     <title>Опрос</title>
     <style>
         body {
-            font-family: sans-serif;
-            padding: 20px;
             background-color: #f2f2f2;
+            height: 100vh;
             display: flex;
+            padding: 2vw;
             flex-direction: column;
             justify-content: space-between;
             align-items: center;
-            gap: 3vw;
+            gap: 2vw;
         }
 
         h2 {
@@ -32,11 +32,12 @@
         }
 
         .options {
+            height: 100%;
+            width: auto;
             display: grid;
             grid-template-columns: repeat(5, 13vw);
             gap: 4vw;
             justify-content: center;
-            margin-top: 20px auto;
         }
 
         .option {
@@ -59,23 +60,28 @@
         }
 
         .option:hover {
-            transform: scale(1.1);
+            transform: scale(1.05);
         }
 
         .option img {
             width: 100%;
             height: auto;
+            margin-bottom: 0.5vw;
             object-fit: cover;
-            border-radius: 25%;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 40%;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         }
 
-        .option p {
+        .option span {
+            font-family: intro, sans-serif;
             font-size: 5vw;
             color: rgba(255, 255, 255, 0.8);
             position: absolute;
             margin: auto;
+        }
 
+        .option div {
+            font-size: 1.1vw;
         }
 
         .results {
@@ -113,87 +119,110 @@
         .result-item {
             margin: 10px 0;
         }
+
+        .buttons {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 2vw;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .floating-button-2 {
+            background-color: #01579b;
+            font-size: 1vw;
+            border-radius: 15px;
+            padding: 10px;
+            font-weight: bold;
+        }
+
+        .floating-button {
+            position: fixed;
+            top: 25%;
+            right: 0;
+            z-index: 1000;
+            font-size: 1vw;
+            color: #01579b;
+            border-radius: 15px 0 0 15px;
+            writing-mode: sideways-lr;
+            padding: 10px;
+            font-weight: bold;
+        }
+
+        .floating-button:hover {
+            background-color: #01579b;
+            color: white;
+        }
     </style>
 </head>
 
 <body>
-    <div class="navContainer">
-        <nav class="nav nav-pills nav-fill">
-            <a class="nav-link" href="index.html">Главная</a>
-            <a class="nav-link active" href="block1.html">Испытание Героев: Битва за Мультивселенную</a>
-            <a class="nav-link" href="block2.html">Испытание Тони Старка</a>
-            <a class="nav-link" href="fortune.html">Колесо Фортуны</a>
-        </nav>
+
+    <div class="buttons">
+        <button class="btn btn-primary floating-button-2" onclick="location.href='/fortune'">← Назад</button>
+        <button class="btn btn-primary floating-button-2" onclick="location.href='/'">Завершить →</button>
     </div>
+
+    <button class="btn btn-outline-primary floating-button" onclick="resetVotes()">Сбросить голоса</button>
+
     <h2>Опиши урок через одну из эмоций</h2>
-    <div class="poll-container" style="position: relative;">
+    <div class="poll-container">
         <div class="options">
-            <div class="option" onclick="vote('a')">
+            <div class="option" onclick="vote(1)">
                 <img src="images/f1.png" alt="1" />
-                <p>0</p>
+                <span id="counter1">0</span>
                 <div>Радость</div>
             </div>
-            <div class="option" onclick="vote('b')">
+            <div class="option" onclick="vote(2)">
                 <img src="images/f2.png" alt="2" />
-                <p>0</p>
+                <span id="counter2">0</span>
                 <div>Гнев</div>
             </div>
-            <div class="option" onclick="vote('c')">
+            <div class="option" onclick="vote(3)">
                 <img src="images/f3.png" alt="3" />
-                <p>0</p>
+                <span id="counter3">0</span>
                 <div>Печаль</div>
             </div>
-            <div class="option" onclick="vote('d')">
+            <div class="option" onclick="vote(4)">
                 <img src="images/f4.png" alt="4" />
-                <p>0</p>
+                <span id="counter4">0</span>
                 <div>Страх</div>
             </div>
-            <div class="option" onclick="vote('e')">
+            <div class="option" onclick="vote(5)">
                 <img src="images/f5.png" alt="5" />
-                <p>0</p>
+                <span id="counter5">0</span>
                 <div>Брезгливость</div>
             </div>
-            <div class="option" onclick="vote('f')">
+            <div class="option" onclick="vote(6)">
                 <img src="images/f6.png" alt="6" />
-                <p>0</p>
+                <span id="counter6">0</span>
                 <div>Тревожность</div>
             </div>
-            <div class="option" onclick="vote('g')">
+            <div class="option" onclick="vote(7)">
                 <img src="images/f7.png" alt="7" />
-                <p>0</p>
+                <span id="counter7">0</span>
                 <div>Стыд</div>
             </div>
-            <div class="option" onclick="vote('h')">
+            <div class="option" onclick="vote(8)">
                 <img src="images/f8.png" alt="8" />
-                <p>0</p>
+                <span id="counter8">0</span>
                 <div>Хандра</div>
             </div>
-            <div class="option" onclick="vote('j')">
+            <div class="option" onclick="vote(9)">
                 <img src="images/f9.png" alt="9" />
-                <p>0</p>
+                <span id="counter9">0</span>
                 <div>Зависть</div>
             </div>
-            <div class="option" onclick="vote('k')">
+            <div class="option" onclick="vote(10)">
                 <img src="images/f10.png" alt="10" />
-                <p>0</p>
+                <span id="counter10">0</span>
                 <div>Ностальгия</div>
             </div>
         </div>
     </div>
 
-    <div class="results-overlay" id="results">
-        <h3>Результаты опроса:</h3>
-        <div class="result-item">Радость: <span id="count-a">0</span></div>
-        <div class="result-item">Гнев: <span id="count-b">0</span></div>
-        <div class="result-item">Печаль: <span id="count-c">0</span></div>
-        <div class="result-item">Страх: <span id="count-d">0</span></div>
-        <div class="result-item">Брезгливость: <span id="count-e">0</span></div>
-        <div class="result-item">Тревожность: <span id="count-f">0</span></div>
-        <div class="result-item">Стыд: <span id="count-g">0</span></div>
-        <div class="result-item">Хандра: <span id="count-h">0</span></div>
-        <div class="result-item">Зависть: <span id="count-j">0</span></div>
-        <div class="result-item">Ностальгия: <span id="count-k">0</span></div>
-    </div>
     <script src="script.js"></script>
 </body>
 

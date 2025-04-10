@@ -91,18 +91,33 @@
       text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black,
         1px 1px 0 black;
     }
+
+    .floating-button {
+      position: fixed;
+      background-color: #01579b;
+      top: 50px;
+      left: 0;
+      z-index: 1000;
+      font-size: 1vw;
+      border-radius: 0 15px 15px 0;
+      writing-mode: sideways-lr;
+      padding: 10px;
+      font-weight: bold;
+    }
   </style>
 </head>
 
 <body>
   <div class="navContainer">
     <nav class="nav nav-pills nav-fill">
-      <a class="nav-link" href="index.html">Главная</a>
-      <a class="nav-link" href="block1.html">Испытание Героев: Битва за Мультивселенную</a>
-      <a class="nav-link" href="block2.html">Испытание Тони Старка</a>
-      <a class="nav-link active" href="fortune.html">Колесо Фортуны</a>
+      <a class="nav-link" href="/">Главная</a>
+      <a class="nav-link" href="/task1">Испытание Героев: Битва за Мультивселенную</a>
+      <a class="nav-link" href="/task2">Испытание Тони Старка</a>
+      <a class="nav-link active" href="/fortune">Колесо Фортуны</a>
     </nav>
   </div>
+
+  <button class="btn btn-primary floating-button" onclick="location.href='/feedback'">Рефлексия</button>
 
   <div class="container">
     <div class="spinButton"></div>

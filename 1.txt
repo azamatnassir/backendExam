@@ -1,0 +1,43 @@
+<!-- <h3 class="mb-4">🧩 Задание: Flask + SQLite (выбор + ручной ввод)</h3>
+
+    <p>Некоторые поля нужно <strong>выбрать</strong>, а некоторые — <strong>ввести вручную.</strong></p>
+
+    <code>
+<select class="inline-select" id="word1">
+  <option selected disabled>_____</option>
+  <option value="import">import</option>
+  <option value="define">define</option>
+  <option value="include">include</option>
+</select> sqlite3<br>
+
+<select class="inline-select" id="word2">
+  <option selected disabled>_____</option>
+  <option value="from">from</option>
+  <option value="with">with</option>
+</select> flask <select class="inline-select" id="word3">
+  <option selected disabled>_____</option>
+  <option value="import">import</option>
+  <option value="print">print</option>
+</select> Flask, request, jsonify<br><br>
+
+app = Flask(__name__)<br><br>
+
+<input class="inline-input" type="text" id="word4" placeholder="введите..."> get_users():<br>
+    conn = sqlite3.connect("users.db")<br>
+    cursor = conn.cursor()<br>
+    cursor.execute("SELECT * FROM users")<br>
+    users = cursor.fetchall()<br>
+    conn.close()<br>
+    <input class="inline-input" type="text" id="word5" placeholder="введите..."> jsonify(users)<br><br>
+
+@app.route("/users")<br>
+<input class="inline-input" type="text" id="word6" placeholder="введите..."> users():<br>
+    return get_users()<br><br>
+
+<select class="inline-select" id="word7">
+  <option selected disabled>_____</option>
+  <option value="if">if</option>
+  <option value="try">try</option>
+</select> __name__ == "__main__":<br>
+    app.run(debug=True)
+    </code> -->

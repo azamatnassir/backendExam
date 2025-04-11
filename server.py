@@ -30,6 +30,13 @@ def init_db():
             drStrange INTEGER NOT NULL
         )      
     """)
+
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS feedback (
+            id INTEGER PRIMARY KEY,
+            count INTEGER NOT NULL
+        )
+    """)
     conn.commit()
     conn.close()
 
@@ -89,7 +96,28 @@ def update_group():
         return jsonify({"success": True})
     except Exception as e:
         return jsonify({"success": False, "error": str(e)}), 500
+    
+    
+@app.route("/vote", methods=["POST"])
+def update_feedback():
+    data = request.json
+    feedback_id = data.get("id")
 
+    if feedback_id is None:
+        return jsonify({"success": False, "error": "Нет group_name"}), 400
+    
+    try:
+        conn = sqlite3.connect("questions.db")
+        cursor = conn.cursor()
+
+        cursor.execute("UPDATE feedback SET count = count + 1 WHERE id = ?", (feedback_id, ))
+        conn.commit()
+        conn.close()
+
+        return jsonify({"success": True})
+    except Exception as e:
+        return jsonify({"success": False, "error": str(e)}), 500
+    
 
 @app.route("/get-questions", methods=["GET"])
 def get_questions():
@@ -112,6 +140,18 @@ def get_questions():
         })
 
     return jsonify(data)
+
+@app.route("/get-votes", methods=["GET"])
+def get_votes():
+    conn = sqlite3.connect("questions.db")
+    conn.row_factory = sqlite3.Row
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM feedback")
+    rows = cursor.fetchall()
+    conn.close()
+
+    votes =  [dict(row) for row in rows]
+    return jsonify(votes)
 
 
 @app.route("/get_groups")
@@ -146,6 +186,9 @@ def fortune():
 def feedback():
     return app.send_static_file("feedback.html")
 
+@app.route("/feedback-m")
+def feedbackMobile():
+    return app.send_static_file("feedback-mobile.html")
 
 @app.route("/")
 def home():

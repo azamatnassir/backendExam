@@ -22,21 +22,5 @@
         "spiderMan": 0,
         "drStrange": 0,
         "total": 0
-    },
-    {
-        "id": 4,
-        "name": "Фантастическая четвёрка",
-        "ironMan": 0,
-        "spiderMan": 0,
-        "drStrange": 0,
-        "total": 0
-    },
-    {
-        "id": 5,
-        "name": "Агенты Щ.И.Т.",
-        "ironMan": 0,
-        "spiderMan": 0,
-        "drStrange": 0,
-        "total": 0
     }
 ]
